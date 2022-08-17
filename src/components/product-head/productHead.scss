@@ -1,0 +1,28 @@
+@use '../../sass/' as *;
+
+.product-head{
+    &--title{
+        margin: 3rem 0;
+        text-align: center;
+
+        @include mobile{
+            margin: 2rem 0;
+        }
+    }
+
+    &__banner{
+
+        margin: 5rem 0;
+
+        @include mobile{
+            margin: 3rem 0;
+        }
+
+        img{
+            width: 100%;
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: top;
+        }
+    }
+}

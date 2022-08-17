@@ -1,0 +1,244 @@
+@use '../../sass/' as *;
+
+.navbar{
+    height: $header-height;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 0;
+    z-index: 99;
+    transition: height 0.3s ease, background-color 0.3s ease;
+    
+
+    &.shrink{
+        padding: 0;
+        height: $header-shrink-height;
+        background-color: $body-bg;
+        box-shadow: $box-shadow-bottom;
+    }
+
+    &__icon{
+        display: none;
+    }
+
+    &__wrap{
+        padding: 0 50px;
+        @include flex(space-between,center);
+        height: 100%;
+
+        @include mobile {
+            justify-content: center;
+        }
+    }
+
+    &__link{
+        font-size: 1.3rem;
+        
+        & > &__item ~ *{
+            margin-left: 16px;
+        }
+
+        &__close{
+            display: none;
+            cursor: pointer;
+            position: absolute;
+            top: 0;
+            right: 0;
+            padding: 0 22px;
+            font-size: 1.8rem;
+
+            @include mobile{
+                padding: 0 8px;
+            }
+        }
+
+        &__item{
+            position: relative;
+
+            &::after{
+                content: "";
+                position: absolute;
+                bottom: calc(0px - 5px);
+                left: 50%;
+                transform: translateX(-50%);
+                width: 0%;
+                height: 2px;
+                background-color: $main-color;
+                transition: width 0.5s ease, color 0.5s ease;
+            }
+
+            &:hover{
+                color: $main-color;
+
+                &::after{
+                    width: 100%;
+                }
+            }
+
+            &.active{
+                color: $main-color;
+                
+                &::after{
+                    width: 100%;
+                }
+            }
+        }
+
+    }
+
+    &__logo{
+        width: 80px;
+
+        @include mobile{
+            width: 50px;
+        }
+
+        img{
+            width: 100%;
+        }
+    }
+
+    &__dropdown{
+        font-size: 2rem;
+        @include flex(center,center);
+
+        @include tablet{
+            font-size: 25.6px;
+        }
+
+        @include mobile{
+            font-size: 16px;
+        }
+
+        & > * ~ *{
+            margin-left: 12px;
+        }
+
+        &--login{
+            
+            font-size: 18px;
+
+            &__noshow{
+                cursor: pointer;
+                @include flex(center,center);
+                span{
+                    padding: 0 4px;
+                    display: block;
+                }
+
+                & > * ~ *{
+                    border-left: 1px solid #000;
+                }
+            }
+
+            &__show{
+                display: none;
+
+                &.active{
+                    display: block;
+                    .login{
+                        &__form{
+                            opacity: 1;
+                            transform: translateY(0);
+                        }
+                    }
+                }
+
+                .login{
+                    background-color: rgba($color: #000000, $alpha: 0.2);
+                    position: fixed;
+                    top: 0;
+                    left: 0;
+                    height: 100vh;
+                    width: 100vw;
+                    @include flex(center,center);
+                    z-index: 1000;
+                
+                    &__form{
+                        background-color: #fff;
+                        z-index: 100;
+                        color: #000;
+                        border-radius: 10px;
+                        padding: 32px;
+                        position: relative;
+                        transform: translateY(-100px);
+                        opacity: 0;
+                        
+                        &--close{
+                            position: absolute;
+                            right: 5px;
+                            top: 5px;
+                            font-size: 25px;
+                            padding: 5px;
+                            cursor: pointer;
+                
+                            &:hover{
+                                color: red;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    @include tablet{
+        &{
+            background-color: $body-bg;
+            box-shadow: $box-shadow-bottom;
+            height: $header-shrink-height;
+
+            &.shrink{
+                height: 3rem;
+            }
+
+            &__icon{
+                display: block;
+                cursor: pointer;
+                i{
+                    font-size: 25.6px;
+                }
+            }
+
+            &__wrap{
+                padding: 0 20px;
+            }
+        
+            &__link{
+                opacity: 0;
+                position: fixed;
+                top: 0;
+                left: -100px;
+                background-color: $body-bg;
+                @include flex(unset,center);
+                flex-direction: column;
+                width: 0;
+                height: 100vh;
+                transition: width 0.5s ease, opacity 0.5s ease;
+                
+                &.active{
+                    opacity: 1;
+                    width: 100vw;
+                    left: 0;
+                }
+
+                &__close{
+                    display: block;
+                }
+
+                &__item{
+                    width: max-content;
+                    margin: 20px 0;
+                    padding: 0 12px;
+                }
+            }
+
+
+        }
+    }
+
+    @include mobile{
+        height: 3rem;
+    }
+}

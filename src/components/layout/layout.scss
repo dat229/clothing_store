@@ -1,0 +1,13 @@
+@use '../../sass/' as *;
+
+.page{
+    padding-top: 8rem;
+    
+    @include tablet{
+        padding-top: 5rem;
+    }
+
+    @include mobile{
+        padding-top: 3rem;
+    }
+}

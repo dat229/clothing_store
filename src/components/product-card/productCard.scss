@@ -1,0 +1,137 @@
+@use '../../sass/' as *;
+
+.product__card--title{
+    text-align: center;
+    margin-bottom: 3rem;
+    text-transform: uppercase;
+    font-size: 1.2rem;
+}
+
+.product__card{
+    display: grid;
+    grid-template-columns: repeat(4,minmax(160px,1fr));
+    column-gap: 120px;
+    row-gap: 30px;
+
+    @include tablet{
+        column-gap: 80px;
+        grid-template-columns: repeat(4,minmax(120px,180px));
+    }
+
+    @include mobile{
+        padding: 0 80px;
+        column-gap: 180px;
+        grid-template-columns: repeat(1,minmax(120px,250px));
+    }
+
+    &.layout--three{
+        grid-template-columns: repeat(3,minmax(120px,1fr));
+        column-gap: 180px;
+        row-gap: 30px;
+        padding: 0 3rem;
+
+        @include tablet{
+            column-gap: 80px;
+            grid-template-columns: repeat(3,minmax(120px,1fr));
+        }
+
+        @include mobile{
+            padding: 0 80px;
+            column-gap: 180px;
+            grid-template-columns: repeat(1,minmax(120px,1fr));
+        }
+    }
+
+    &__item{
+        position: relative;
+        cursor: pointer;
+
+        &__item--link{
+
+            &:hover{
+                color: $txt-color;
+            }
+        }
+
+        text-align: center;
+        color: $txt-color;
+
+        @include mobile{
+            margin-bottom: 16px;
+        }
+        
+        &__image{
+            position: relative;
+            width: max-content;
+            width: 100%;
+
+            &:hover > &--img01{
+                width: 100%;
+                img{
+                    transform: scale(0);
+                }
+            }
+
+            &:hover > &--img02{
+                width: 100%;
+                visibility:inherit;
+                
+            }
+
+            div {
+                height: 250px;
+                @include flex(center,center);
+                img{
+                    width: 100%;
+                    border-radius: 10px;
+                }
+            }
+            
+            &--img01{
+                img{
+                    transition: transform 0.5s ease;
+                }
+            }
+
+            &--img02{
+                position: absolute;
+                width: 0%;
+                top: 50%;
+                left: 50%;
+                transition: width 0.5s ease;
+                z-index: 1;
+                transform: translate(-50%, -50%);
+                visibility: hidden;
+            }
+        }
+        
+        &__title{
+            display: block;
+            color: $txt-color;
+            margin: 8px 0;
+            height: 2rem;
+            line-height: 1rem;
+        }
+
+        &__price{
+            color: $txt-color;
+            &--read{
+                color: $black;
+                font-weight: 500;
+                margin-right: 16px;
+            }
+
+            & > * ~ *{
+                text-decoration:line-through;
+            }
+        }
+
+        .button__link{
+            margin: 12px auto 0;
+
+            @include mobile{
+                display: none;
+            }
+        }
+    }
+}

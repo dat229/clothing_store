@@ -1,0 +1,100 @@
+@use '../../sass/' as *;
+
+.login{
+    // background-color: rgba($color: #000000, $alpha: 0.2);
+    // position: fixed;
+    // top: 0;
+    // left: 0;
+    // height: 100vh;
+    // width: 100vw;
+    // @include flex(center,center);
+    // z-index: 1000;
+
+    &__form{
+        // background-color: #fff;
+        // z-index: 100;
+        // color: #000;
+        // border-radius: 10px;
+        // padding: 32px;
+        // position: relative;
+
+        &--close{
+            position: absolute;
+            right: 5px;
+            top: 5px;
+            font-size: 25px;
+            padding: 5px;
+            cursor: pointer;
+
+            &:hover{
+                color: red;
+            }
+        }
+
+        h1{
+            text-align: center;
+            margin-bottom: 32px;
+        }
+
+        input{
+            border-radius: 10px;
+            border: 1px solid rgba($color: #000000, $alpha: 0.5);
+            width: 300px;
+            padding: 0 12px;
+            height: 40px;
+            margin: 22px;
+            display: block;
+        }
+
+        button{
+            color: #fff;
+            padding: 8px 52px;
+            border: none;
+            background: linear-gradient(to right, aqua 15%, blue 60% );
+            display: block;
+            margin: 0 auto;
+            cursor:pointer;
+            border-radius: 10px;
+        }
+
+        &>span{
+            color: $txt-color;
+            font-size: 16px;
+            text-align: center;
+            display: block;
+            margin: 22px 0;
+        }
+
+        &--change{
+            @include flex(center,center);
+
+            &--item{
+                cursor: pointer;
+                @include flex(center,center);
+                width: 120px;
+                padding: 4px 0;
+                text-align: center;
+                border-radius: 10px;
+                border: 1px solid rgba($color: #000000, $alpha: 0.6);
+                margin: 12px;
+                
+                i{
+                    color: blue;
+                    margin-right: 12px;
+                }
+                span{
+                    color: blue;
+                }
+            }
+        }
+
+        &--singup{
+            text-align: center;
+            font-size: 16px;
+            a{
+                color: blue;
+                margin-left: 8px;
+            }
+        }
+    }
+}
