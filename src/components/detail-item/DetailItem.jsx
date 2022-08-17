@@ -60,7 +60,7 @@ const DetailItem = (props) => {
                 amount: amountItem,
             }));
 
-            alert("successfu");
+            alert("successfully");
         }
         else{
             // if(colorItem===null && sizeItem===null){
